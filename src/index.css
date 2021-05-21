@@ -7,7 +7,72 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+
+.container {
+  max-width: 900px;
+  margin: 1rem 2rem;
+}
+
+.card-grid {
+  display: grid;
+  align-items: center;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  border-radius: 0.25em;
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, .3);
+  background-color: rgb(211, 204, 204);
+  height: 150px;
+  transform-style: preserve-3d;
+  transition: 150ms;
+  transform: perspective(1000px) rotateY(var(--rotate-y,0))
+  translateY(var(--translate-y, 0));
+  cursor: pointer;
+}
+
+.card:hover {
+  --translate-y: -2px;
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, .5);
+}
+
+.card.flip {
+  --rotate-y: 180deg
+}
+
+.card .front, .card .back {
+  position: absolute;
+  padding: 1rem;
+  /* ḣides reversed items */
+  backface-visibility: hidden;
+}
+
+.card .back {
+  transform: rotateY(180deg);
+  font-size: 2rem;
+}
+
+.card .front {
+  font-size: 3rem;
+  font-family: 'Traditional Arabic', Amiri;
+}
+
+.flashcard-options {
+  margin-top: .5rem;
+
+}
+
+.flashcard-option {
+  margin-top: .25rem;
+  color: #555;
+  font-size: .75rem;
+}
+
+.flashcard-option:first-child {
+  margin-top: 0;
 }
