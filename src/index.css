@@ -76,3 +76,16 @@ body {
 .flashcard-option:first-child {
   margin-top: 0;
 }
+
+nav {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px 0;
+
+}
+
+.navitem {
+  text-decoration: none;
+  color: #3C2F19;
+
+}

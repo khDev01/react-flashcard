@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react"
-import Flashcardlist from "./Flashcardlist.js"
 import "./index.css"
-// import lesson from "./lesson1.json"
 import book1 from "./book1.json"
 import {
   BrowserRouter as Router,
@@ -12,33 +10,14 @@ import {
   useParams,
 } from "react-router-dom"
 
+// const { mynum } = useParams()
+
 function App() {
   const [myid, setmyid] = useState(1)
-  // let mynum = useParams()
-
   // let LessonNumber = { ṁyid }
 
   let filteredArray = book1.filter((obj) => obj.Lesson === myid)
   // .map((obj) => obj.id)
-  const [flashcards, setflashcards] = useState(SampleFlashcard)
-  useEffect(() => {
-    document.getElementsByClassName(
-      "navitem"
-    ).innerHTML = `You clicked ${myid} times`
-    setflashcards(
-      filteredArray.map((questionItem, index) => {
-        const answer = questionItem.English
-        // multiple choice options
-        // const option = [questionItem.Arabic, questionItem.English]
-        return {
-          id: `${index}`,
-          question: questionItem.Arabic,
-          answer: answer,
-          options: [],
-        }
-      })
-    )
-  }, [])
 
   console.log(filteredArray) // a list of ids
 
@@ -69,9 +48,6 @@ function App() {
           <Topics />
         </Route>
       </Switch>
-      <div className="container">
-        <Flashcardlist flashcards={flashcards} />
-      </div>
     </Router>
   )
   // return <Mydata />
@@ -121,20 +97,5 @@ function Topic() {
   let { topicId } = useParams()
   return <h3>Requested topic ID: {topicId}</h3>
 }
-
-const SampleFlashcard = [
-  {
-    id: 1,
-    question: "what is 2 + 3",
-    answer: "4",
-    options: ["2", "3", "4", "5"],
-  },
-  {
-    id: 2,
-    question: "question 2",
-    answer: "answer",
-    options: ["answer", "3", "4", "5"],
-  },
-]
 
 export default App
