@@ -7,6 +7,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.testbox {
+  background-color: aqua;
+}
+
 
 .container {
   max-width: 900px;

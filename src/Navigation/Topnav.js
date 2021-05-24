@@ -20,11 +20,14 @@ export default function Topnav() {
         <Route exact path="/">
           <Home />
         </Route>
-        <Route path="/Medina-arabic">
+        <Route exact path="/Medina-arabic">
           <MedinaArabic />
         </Route>
         <Route path="/topics">
           <Topics />
+        </Route>
+        <Route path="/Medina-arabic/:id">
+          <Child />
         </Route>
       </Switch>
       {/* <button onClick={() => setmyid(myid + 1)}>Click</button> */}
@@ -54,13 +57,9 @@ function MedinaArabic() {
           <Link to={`${match.url}/props-v-state`}>Props v. State</Link>
         </li>
       </ul>
-      <Switch>
-        <Route path={`${match.path}/:id`}>
-          <Child />
-        </Route>
-      </Switch>
+      <Switch></Switch>
       <div className="container">
-        <Flashcardlist />
+        <Flashcardlist urlid={false} />
       </div>
     </>
   )
@@ -68,10 +67,28 @@ function MedinaArabic() {
 
 function Child() {
   let { id } = useParams()
-  return <Flashcardlist id={id} />
-  //   return (
+  //   return <Flashcardlist id={id} />
+  return (
+    <div className="testbox">
+      <Listnav />
+      <h1>Welcome</h1>
+      <Flashcardlist id={id} urlid={true} />
+    </div>
+  )
+}
 
-  //   )
+function Listnav() {
+  const list = []
+  let link = ""
+  for (let i = 0; i < 24; i++) {
+    link = "/Medina-arabic/" + i
+    list.push(
+      <li>
+        <a href={link}>{i}</a>
+      </li>
+    )
+  }
+  return <ul>{list}</ul>
 }
 
 function Topics() {

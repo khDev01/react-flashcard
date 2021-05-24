@@ -3,16 +3,37 @@ import book1 from "../book1.json"
 import React, { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
 
+const maxval = Math.max.apply(
+  Math,
+  book1.map(function (o) {
+    return o.Lesson
+  })
+)
 export default function Flashcardlist(props) {
   // console.log("hello")
   // console.log(myuserid)
-  const [myid, setmyid] = useState(1)
-  const Clicked = () => {
-    setmyid(myid + 1)
+  let [myid, setmyid] = useState(1)
+  const NextLesson = () => {
+    if (myid < maxval) {
+      setmyid(myid + 1)
+    } else {
+    }
     // Flashcardlist()
   }
+  const PreviousLesson = () => {
+    if (myid > 1) {
+      setmyid(myid - 1)
+    } else {
+    }
+  }
+
+  if (props.urlid == true && myid != props.id) {
+    setmyid(myid + 1)
+  }
+  console.log("First", myid)
   let filteredArray = book1.filter((obj) => obj.Lesson === myid)
   // .map((obj) => obj.id)
+
   const [flashcards, setflashcards] = useState(SampleFlashcard)
   useEffect(() => {
     setflashcards(
@@ -30,12 +51,15 @@ export default function Flashcardlist(props) {
     )
   }, [myid])
 
-  console.log(props.id)
+  // console.log(props.id)
   // console.log(filteredArray)
   return (
     <>
-      <button onClick={Clicked}>Click</button>
-      <h1>Lesson {myid}</h1>
+      <button onClick={PreviousLesson}>Previous</button>
+      <button onClick={NextLesson}>Next</button>
+      <h1>
+        Lesson {myid} / {props.id}
+      </h1>
       {/* <Testing id={myid} /> */}
       <div className="card-grid">
         {flashcards.map((flashcard) => {
