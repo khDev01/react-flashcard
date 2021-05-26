@@ -10,8 +10,7 @@ const maxval = Math.max.apply(
   })
 )
 export default function Flashcardlist(props) {
-  // console.log("hello")
-  // console.log(myuserid)
+  // console.log(props)
   let [myid, setmyid] = useState(1)
   const NextLesson = () => {
     if (myid < maxval) {
@@ -27,15 +26,15 @@ export default function Flashcardlist(props) {
     }
   }
 
-  if (props.urlid == true && myid != props.id) {
-    setmyid(myid + 1)
+  if (props.urlid === true && myid != props.id) {
+    setmyid(props.id)
   }
-  console.log("First", myid)
   let filteredArray = book1.filter((obj) => obj.Lesson === myid)
   // .map((obj) => obj.id)
 
   const [flashcards, setflashcards] = useState(SampleFlashcard)
   useEffect(() => {
+    // console.log("Sectond", myid)
     setflashcards(
       filteredArray.map((questionItem, index) => {
         const answer = questionItem.English
