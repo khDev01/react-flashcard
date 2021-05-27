@@ -35,7 +35,7 @@ body {
   background-color: rgb(211, 204, 204);
   height: 150px;
   transform-style: preserve-3d;
-  transition: 150ms;
+  transition: 550ms;
   transform: perspective(1000px) rotateY(var(--rotate-y,0))
   translateY(var(--translate-y, 0));
   cursor: pointer;
@@ -164,4 +164,22 @@ div.content {
 .sidebar a:hover:not(.active) {
   background-color: #555;
   color: white;
+}
+
+.btn {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.flex {
+  display: flex;
+  flex-direction: column;
 }

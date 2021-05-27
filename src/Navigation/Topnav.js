@@ -1,10 +1,13 @@
 import React from "react"
-import { Link, Switch, Route, useRouteMatch, useParams } from "react-router-dom"
+import { Link, Switch, Route, useParams } from "react-router-dom"
 import Flashcardlist from "../Flashcard/Flashcardlist.js"
 import Home from "./Home.js"
-import styled from "styled-components"
+// import styled from "styled-components"
+import Topics from "./Topics.js"
 import SideNav from "./SideNav.js"
-import book1 from "../book1.json"
+import Flip from "./Flip.js"
+import Btnchangelesson from "./Btnchangelesson.js"
+// import book1 from "../book1.json"
 
 // const Container = styled.div`
 //   background: darkred;
@@ -88,7 +91,7 @@ export default function Topnav() {
 
       <Switch>
         <Route exact path="/">
-          <Home />
+          <Flip />
         </Route>
         <Route exact path="/Medina-arabic">
           <MedinaArabic />
@@ -114,7 +117,7 @@ export default function Topnav() {
 // }
 
 function MedinaArabic() {
-  let match = useRouteMatch()
+  // let match = useRouteMatch()
   return (
     <>
       <Switch></Switch>
@@ -122,50 +125,52 @@ function MedinaArabic() {
         <SideNav />
         <div className="content">
           <h2>MedinaArabic</h2>
+          <Btnchangelesson />
+
           <div className="container">
-            <Flashcardlist urlid={false} />
+            <Flashcardlist urlid={false} book={1} />
           </div>
         </div>
       </main>
     </>
   )
 }
-const maxval = Math.max.apply(
-  Math,
-  book1.map(function (o) {
-    return o.Lesson
-  })
-)
+// const maxval = Math.max.apply(
+//   Math,
+//   book1.map(function (o) {
+//     return o.Lesson
+//   })
+// )
 
 function Child() {
   let { id } = useParams()
-  let changeid = id
+  // let changeid = id
   //   return <Flashcardlist id={id} />
-  id = parseInt(id)
+  let intid = parseInt(id)
+  // //let strintnext = intid < 23 ? intid + 1 : intid
+  // // let strintprev = intid > 1 ? intid - 1 : intid
   // console.log("Param", id)
-  const NextLesson = () => {
-    if (id < maxval) {
-      changeid += 1
-    } else {
-    }
-    // Flashcardlist()
-  }
-  const PreviousLesson = () => {
-    if (id > 1) {
-      changeid -= 1
-    } else {
-    }
-  }
+  // const NextLesson = () => {
+  //   if (id < maxval) {
+  //     changeid += 1
+  //   } else {
+  //   }
+  //   // Flashcardlist()
+  // }
+  // const PreviousLesson = () => {
+  //   if (id > 1) {
+  //     changeid -= 1
+  //   } else {
+  //   }
+  // }
   return (
     <main className="">
       <SideNav />
 
       <div className="content">
         <h1>Book 1</h1>
-        <Link className="navitem" to="/Medina-arabic/12">
-          Home
-        </Link>
-        <Flashcardlist id={id} urlid={true} />
+        <Btnchangelesson />
+        <Flashcardlist id={intid} urlid={true} />
       </div>
     </main>
   )
@@ -201,38 +206,3 @@ function Child() {
 //////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////
-
-function Topics() {
-  let match = useRouteMatch()
-  return (
-    <div>
-      <h2>Topics</h2>
-      <ul>
-        <li>
-          <Link to={`${match.url}/React`}>Components</Link>
-        </li>
-        <li>
-          <Link to={`${match.url}/props-v-state`}>Props v. State</Link>
-        </li>
-      </ul>
-
-      {/* The Topics page has its own <Switch> with more routes
-            that build on the /topics URL path. You can think of the
-            2nd <Route> here as an "index" page for all topics, or
-            the page that is shown when no topic is selected */}
-      <Switch>
-        <Route path={`${match.path}/:topicId`}>
-          <Topic />
-        </Route>
-        <Route path={match.path}>
-          <h3>Please select a topic.</h3>
-        </Route>
-      </Switch>
-    </div>
-  )
-}
-
-function Topic() {
-  let { topicId } = useParams()
-  return <h3>Requested topic ID: {topicId}</h3>
-}

@@ -1,7 +1,7 @@
 import React from "react"
-import { Link, Switch, Route, useRouteMatch, useParams } from "react-router-dom"
-import Flashcardlist from "../Flashcard/Flashcardlist.js"
-import Home from "./Home.js"
+import { Link, useParams } from "react-router-dom" //Switch, Route, useRouteMatch,
+// import Flashcardlist from "../Flashcard/Flashcardlist.js"
+// import Home from "./Home.js"
 
 export default function SideNav() {
   return (
@@ -50,9 +50,9 @@ function Listnav() {
   let link = ""
   for (let i = 1; i < 24; i++) {
     link = "/Medina-arabic/" + i
-    if (urlid.id == i) {
+    if (parseInt(urlid.id) === i) {
       list.push(
-        <Link className="active" to={link}>
+        <Link key={i} className="active" to={link}>
           Lesson {i}
         </Link>
       )

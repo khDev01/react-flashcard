@@ -1,7 +1,7 @@
 import Flashcard from "./Flashcard"
 import book1 from "../book1.json"
 import React, { useState, useEffect } from "react"
-import { useParams } from "react-router-dom"
+// import { useParams } from "react-router-dom"
 
 const maxval = Math.max.apply(
   Math,
@@ -12,21 +12,21 @@ const maxval = Math.max.apply(
 export default function Flashcardlist(props) {
   // console.log(props)
   let [myid, setmyid] = useState(1)
-  const NextLesson = () => {
-    if (myid < maxval) {
-      setmyid(myid + 1)
-    } else {
-    }
-    // Flashcardlist()
-  }
-  const PreviousLesson = () => {
-    if (myid > 1) {
-      setmyid(myid - 1)
-    } else {
-    }
-  }
+  // const NextLesson = () => {
+  //   if (myid < maxval) {
+  //     setmyid(myid + 1)
+  //   } else {
+  //   }
+  //   // Flashcardlist()
+  // }
+  // const PreviousLesson = () => {
+  //   if (myid > 1) {
+  //     setmyid(myid - 1)
+  //   } else {
+  //   }
+  // }
 
-  if (props.urlid === true && myid != props.id) {
+  if (props.urlid === true && myid !== props.id) {
     setmyid(props.id)
   }
   let filteredArray = book1.filter((obj) => obj.Lesson === myid)
@@ -54,8 +54,8 @@ export default function Flashcardlist(props) {
   // console.log(filteredArray)
   return (
     <>
-      <button onClick={PreviousLesson}>Previous</button>
-      <button onClick={NextLesson}>Next</button>
+      {/* <button onClick={PreviousLesson}>Previous</button>
+      <button onClick={NextLesson}>Next</button> */}
       <h1>
         Lesson {myid} / {props.id}
       </h1>
