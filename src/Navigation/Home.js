@@ -1,14 +1,14 @@
 import React from "react"
 import "../index.css"
-import Button from "./button.js"
+// import Button from "./button.js"
 
 // props do not need to be sent when called  <Home />
 const Home = ({ color, text }) => {
   let hello = 5
-  const onClick = () => {
-    return
-    hello += 1
-  }
+  // const onClick = () => {
+  //   return
+  //   hello += 1
+  // }
   return (
     <div>
       {/* // CSS-1-- Inline */}
@@ -16,7 +16,7 @@ const Home = ({ color, text }) => {
       {/* // CSS-2-- Internal */}
       <h5 style={Mystyling}>{text}</h5>
       <p>{hello}</p>
-      <Button onClick={onClick} />
+      {/* <Button onClick={onClick} /> */}
     </div>
   )
 }

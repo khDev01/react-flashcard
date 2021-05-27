@@ -1,15 +1,15 @@
 import Flashcard from "./Flashcard"
-import book1 from "../book1.json"
+import book3 from "../lesson3.json"
 import React, { useState, useEffect } from "react"
 // import { useParams } from "react-router-dom"
 
 const maxval = Math.max.apply(
   Math,
-  book1.map(function (o) {
+  book3.map(function (o) {
     return o.Lesson
   })
 )
-export default function Flashcardlist(props) {
+export default function Book3list(props) {
   // console.log(props)
   let [myid, setmyid] = useState(1)
   // const NextLesson = () => {
@@ -29,7 +29,7 @@ export default function Flashcardlist(props) {
   if (props.urlid === true && myid !== props.id) {
     setmyid(props.id)
   }
-  let filteredArray = book1.filter((obj) => obj.Lesson === myid)
+  let filteredArray = book3.filter((obj) => obj.Lesson === myid)
   // .map((obj) => obj.id)
 
   const [flashcards, setflashcards] = useState(SampleFlashcard)
@@ -57,8 +57,7 @@ export default function Flashcardlist(props) {
       {/* <button onClick={PreviousLesson}>Previous</button>
       <button onClick={NextLesson}>Next</button> */}
       <h1>
-        {/* Lesson {myid} / {props.id} */}
-        Lesson {myid}
+        Lesson {myid} / {props.id}
       </h1>
       {/* <Testing id={myid} /> */}
       <div className="card-grid">

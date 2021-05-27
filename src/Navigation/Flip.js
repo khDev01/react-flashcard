@@ -2,53 +2,42 @@ import React, { useState, useEffect } from "react"
 
 function Flip(props) {
   const [flip, setflip] = useState(false)
-  console.log(props)
+  // console.log(props)
+  // Flip card at every interval
   useEffect(() => {
+    // setInterval(run code , time.ms)
     const interval = setInterval(() => {
       if (flip === true) {
         setflip(false)
-        console.log(flip)
+        // console.log(flip)
       } else {
         setflip(true)
-        console.log(flip)
+        // console.log(flip)
       }
     }, 1000)
+    // Makes sure interval only runs on first mount, works as componentWillUnmount
     return () => clearInterval(interval)
   }, [flip])
-  // function tick() {
-  //   if (flip === true) {
-  //     setflip(false)
-  //     console.log(flip)
-
-  //     return
-  //   } else {
-  //     setflip(true)
-  //     console.log(flip)
-
-  //     return
-  //   }
-  // }
-  // setInterval(tick, 1000)
-  // console.log(flip)
   return (
-    <div className="card-grid">
-      <div className={`card ${flip ? "flip" : ""}`}>
-        <div className="front">
-          {props.question}
-          {/* <div className="flashcard-options">
-          {props.options.map((option) => {
-            return <div className="flashcard-option">{option}</div>
-          })}
-        </div> */}
-        </div>
+    <div className="card-gridstst">
+      <div className={`card ${flip ? "flip" : ""}`} style={cardstyle}>
+        <div className="front">{props.question}</div>
         <div className="back">{props.answer}</div>
-        {/* {flip ? flashcard.answer : flashcard.question} */}
-      </div>{" "}
+      </div>
     </div>
   )
 }
 Flip.defaultProps = {
   question: "front",
   answer: "back",
+}
+
+const cardstyle = {
+  color: "#d37f46",
+  // display: "grid",
+  width: "20vw",
+  "align-items": "center",
+  "grid-template-columns": "repeat(auto-fill, minmax(200px, 1fr))",
+  gap: "1rem",
 }
 export default Flip

@@ -1,12 +1,12 @@
 import React from "react"
-import { Link, useParams } from "react-router-dom" //Switch, Route, useRouteMatch,
+import { Link, useParams, useRouteMatch } from "react-router-dom" //Switch, Route, useRouteMatch,
 // import Flashcardlist from "../Flashcard/Flashcardlist.js"
 // import Home from "./Home.js"
 
-export default function SideNav() {
+export default function SideNav({ page }) {
   return (
     <>
-      <Listnav></Listnav>
+      <Listnav page={page}></Listnav>
     </>
   )
 }
@@ -43,22 +43,39 @@ export default function SideNav() {
 //   )
 // }
 
-function Listnav() {
+function Listnav({ page }) {
   const list = []
+  const hello = "hello"
+  //   console.log(hello.includes("elp"))
+  const myroute = useRouteMatch()
+  const mybooklink = myroute.url.includes("book2")
+    ? "/Medina-arabic/book2/"
+    : myroute.url.includes("book3")
+    ? "/Medina-arabic/book3/"
+    : "/Medina-arabic/book1/"
+  const maxlessons = myroute.url.includes("book2") ? 26 : myroute.url.includes("book3") ? 34 : 24
   const urlid = useParams()
   //   console.log(urlid)
   let link = ""
-  for (let i = 1; i < 24; i++) {
-    link = "/Medina-arabic/" + i
-    if (parseInt(urlid.id) === i) {
-      list.push(
-        <Link key={i} className="active" to={link}>
-          Lesson {i}
-        </Link>
-      )
-    } else {
-      list.push(<Link to={link}>Lesson {i}</Link>)
+  if (page === "main") {
+    for (let i = 1; i < 4; i++) {
+      link = "/Medina-arabic/book" + i + "/1"
+      list.push(<Link to={link}>Book {i}</Link>)
+    }
+  } else {
+    for (let i = 1; i <= maxlessons; i++) {
+      link = "/Medina-arabic/book1/" + i
+      if (parseInt(urlid.id) === i) {
+        list.push(
+          <Link key={i} className="active" to={mybooklink + i + "/"}>
+            Lesson {i}
+          </Link>
+        )
+      } else {
+        list.push(<Link to={mybooklink + i + "/"}>Lesson {i}</Link>)
+      }
     }
   }
+
   return <nav className="sidebar">{list}</nav>
 }

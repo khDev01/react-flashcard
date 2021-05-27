@@ -7,6 +7,8 @@ import Topics from "./Topics.js"
 import SideNav from "./SideNav.js"
 import Flip from "./Flip.js"
 import Btnchangelesson from "./Btnchangelesson.js"
+import Book2list from "../Flashcard/book2list.js"
+import Book3list from "../Flashcard/book3list.js"
 // import book1 from "../book1.json"
 
 // const Container = styled.div`
@@ -99,8 +101,14 @@ export default function Topnav() {
         <Route path="/topics">
           <Topics />
         </Route>
-        <Route path="/Medina-arabic/:id">
+        <Route path="/Medina-arabic/book1/:id">
           <Child />
+        </Route>
+        <Route path="/Medina-arabic/book2/:id">
+          <Child2 />
+        </Route>
+        <Route path="/Medina-arabic/book3/:id">
+          <Child3 />
         </Route>
       </Switch>
       {/* <button onClick={() => setmyid(myid + 1)}>Click</button> */}
@@ -122,7 +130,7 @@ function MedinaArabic() {
     <>
       <Switch></Switch>
       <main>
-        <SideNav />
+        <SideNav page="main" />
         <div className="content">
           <h2>MedinaArabic</h2>
           <Btnchangelesson />
@@ -176,6 +184,35 @@ function Child() {
   )
 }
 
+function Child2() {
+  let { id } = useParams()
+  let intid = parseInt(id)
+  return (
+    <main className="">
+      <SideNav />
+      <div className="content">
+        <h1>Book 2</h1>
+        <Btnchangelesson />
+        <Book2list id={intid} urlid={true} />
+      </div>
+    </main>
+  )
+}
+
+function Child3() {
+  let { id } = useParams()
+  let intid = parseInt(id)
+  return (
+    <main className="">
+      <SideNav />
+      <div className="content">
+        <h1>Book 3</h1>
+        <Btnchangelesson />
+        <Book3list id={intid} urlid={true} />
+      </div>
+    </main>
+  )
+}
 // function Listnav() {
 //   const list = []
 //   const urlid = useParams()
