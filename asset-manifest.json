@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/react-flashcard/static/css/main.88a68d2e.chunk.css",
-    "main.js": "/react-flashcard/static/js/main.3245ffef.chunk.js",
-    "main.js.map": "/react-flashcard/static/js/main.3245ffef.chunk.js.map",
+    "main.css": "/react-flashcard/static/css/main.53dcaf83.chunk.css",
+    "main.js": "/react-flashcard/static/js/main.aa35c429.chunk.js",
+    "main.js.map": "/react-flashcard/static/js/main.aa35c429.chunk.js.map",
     "runtime-main.js": "/react-flashcard/static/js/runtime-main.0cc84b2c.js",
     "runtime-main.js.map": "/react-flashcard/static/js/runtime-main.0cc84b2c.js.map",
-    "static/js/2.d917c1e4.chunk.js": "/react-flashcard/static/js/2.d917c1e4.chunk.js",
-    "static/js/2.d917c1e4.chunk.js.map": "/react-flashcard/static/js/2.d917c1e4.chunk.js.map",
+    "static/js/2.b583de3a.chunk.js": "/react-flashcard/static/js/2.b583de3a.chunk.js",
+    "static/js/2.b583de3a.chunk.js.map": "/react-flashcard/static/js/2.b583de3a.chunk.js.map",
     "index.html": "/react-flashcard/index.html",
-    "static/css/main.88a68d2e.chunk.css.map": "/react-flashcard/static/css/main.88a68d2e.chunk.css.map",
-    "static/js/2.d917c1e4.chunk.js.LICENSE.txt": "/react-flashcard/static/js/2.d917c1e4.chunk.js.LICENSE.txt"
+    "static/css/main.53dcaf83.chunk.css.map": "/react-flashcard/static/css/main.53dcaf83.chunk.css.map",
+    "static/js/2.b583de3a.chunk.js.LICENSE.txt": "/react-flashcard/static/js/2.b583de3a.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.0cc84b2c.js",
-    "static/js/2.d917c1e4.chunk.js",
-    "static/css/main.88a68d2e.chunk.css",
-    "static/js/main.3245ffef.chunk.js"
+    "static/js/2.b583de3a.chunk.js",
+    "static/css/main.53dcaf83.chunk.css",
+    "static/js/main.aa35c429.chunk.js"
   ]
 }
