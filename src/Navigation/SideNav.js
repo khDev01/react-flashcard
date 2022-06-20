@@ -45,7 +45,7 @@ export default function SideNav({ page }) {
 
 function Listnav({ page }) {
   const list = []
-  const hello = "hello"
+  // const hello = "hello"
   //   console.log(hello.includes("elp"))
   const myroute = useRouteMatch()
   const mybooklink = myroute.url.includes("book2")
@@ -53,7 +53,11 @@ function Listnav({ page }) {
     : myroute.url.includes("book3")
     ? "/Medina-arabic/book3/"
     : "/Medina-arabic/book1/"
-  const maxlessons = myroute.url.includes("book2") ? 26 : myroute.url.includes("book3") ? 34 : 24
+  const maxlessons = myroute.url.includes("book2")
+    ? 26
+    : myroute.url.includes("book3")
+    ? 34
+    : 24
   const urlid = useParams()
   //   console.log(urlid)
   let link = ""
@@ -72,7 +76,7 @@ function Listnav({ page }) {
           </Link>
         )
       } else {
-        list.push(<Link to={mybooklink + i + "/"}>Lesson {i}</Link>)
+        list.push(<Link to={mybooklink + i + "/"}>L {i}</Link>)
       }
     }
   }

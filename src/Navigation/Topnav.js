@@ -1,14 +1,16 @@
 import React from "react"
+// import { Link, Switch, Route, useParams, useRouteMatch } from "react-router-dom"
 import { Link, Switch, Route, useParams } from "react-router-dom"
 import Flashcardlist from "../Flashcard/Flashcardlist.js"
-import Home from "./Home.js"
+// import Home from "./Home.js"
 // import styled from "styled-components"
 import Topics from "./Topics.js"
 import SideNav from "./SideNav.js"
-import Flip from "./Flip.js"
+// import Flip from "./Flip.js"
 import Btnchangelesson from "./Btnchangelesson.js"
 import Book2list from "../Flashcard/book2list.js"
 import Book3list from "../Flashcard/book3list.js"
+import Home from "./Home.js"
 // import book1 from "../book1.json"
 
 // const Container = styled.div`
@@ -93,7 +95,7 @@ export default function Topnav() {
 
       <Switch>
         <Route exact path="/">
-          <Flip />
+          <Home />
         </Route>
         <Route exact path="/Medina-arabic">
           <MedinaArabic />
@@ -135,9 +137,9 @@ function MedinaArabic() {
           <h2>MedinaArabic</h2>
           <Btnchangelesson />
 
-          <div className="container">
+          {/* <div className="container">
             <Flashcardlist urlid={false} book={1} />
-          </div>
+          </div> */}
         </div>
       </main>
     </>
@@ -152,6 +154,14 @@ function MedinaArabic() {
 
 function Child() {
   let { id } = useParams()
+  // let match
+  // match = useRouteMatch()
+  //   ? // const lessontochange = match.url.includes("book2")
+  //     "book2"
+  //   : match.url.includes("book3")
+  //   ? "book3"
+  //   : "book1"
+
   // let changeid = id
   //   return <Flashcardlist id={id} />
   let intid = parseInt(id)
@@ -179,6 +189,7 @@ function Child() {
         <h1>Book 1</h1>
         <Btnchangelesson />
         <Flashcardlist id={intid} urlid={true} />
+        {/* <Flashcardlist id={intid} urlid={true} book={} /> */}
       </div>
     </main>
   )

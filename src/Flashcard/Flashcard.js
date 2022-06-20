@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 
 export default function Flashcard({ flashcard }) {
   const [flip, setflip] = useState(false)
@@ -15,7 +15,10 @@ export default function Flashcard({ flashcard }) {
   // }, [flip])
 
   return (
-    <div className={`card ${flip ? "flip" : ""}`} onClick={() => setflip(!flip)}>
+    <div
+      className={`card ${flip ? "flip" : ""}`}
+      onClick={() => setflip(!flip)}
+    >
       <div className="front">
         {flashcard.question}
         <div className="flashcard-options">

@@ -1,14 +1,17 @@
 import Flashcard from "./Flashcard"
 import book1 from "../book1.json"
+// import book2 from "../lesson2.json"
+// import book3 from "../lesson3.json"
+
 import React, { useState, useEffect } from "react"
 // import { useParams } from "react-router-dom"
 
-const maxval = Math.max.apply(
-  Math,
-  book1.map(function (o) {
-    return o.Lesson
-  })
-)
+// const maxval = Math.max.apply(
+//   Math,
+//   book1.map(function (o) {
+//     return o.Lesson
+//   })
+// )
 export default function Flashcardlist(props) {
   // console.log(props)
   let [myid, setmyid] = useState(1)
@@ -29,20 +32,22 @@ export default function Flashcardlist(props) {
   if (props.urlid === true && myid !== props.id) {
     setmyid(props.id)
   }
-  let filteredArray = book1.filter((obj) => obj.Lesson === myid)
+
   // .map((obj) => obj.id)
 
   const [flashcards, setflashcards] = useState(SampleFlashcard)
   useEffect(() => {
+    let filteredArray = book1.filter((obj) => obj.L === myid)
     // console.log("Sectond", myid)
+
     setflashcards(
       filteredArray.map((questionItem, index) => {
-        const answer = questionItem.English
+        const answer = questionItem.En
         // multiple choice options
         // const option = [questionItem.Arabic, questionItem.English]
         return {
           id: `${index}`,
-          question: questionItem.Arabic,
+          question: questionItem.Ar,
           answer: answer,
           options: [],
         }
@@ -63,7 +68,13 @@ export default function Flashcardlist(props) {
       {/* <Testing id={myid} /> */}
       <div className="card-grid">
         {flashcards.map((flashcard) => {
-          return <Flashcard flashcard={flashcard} key={flashcard.id} />
+          return (
+            <Flashcard
+              flashcard={flashcard}
+              book={"bookNumber"}
+              key={flashcard.id}
+            />
+          )
         })}
       </div>
     </>
